@@ -1,3 +1,6 @@
+#include<cstdio>
+#include<iostream>
+using namespace std;
 enum komainf{
     empty = 0,
     fu = 1,
@@ -77,4 +80,33 @@ char *komaStr[] = {
 void situation::Print(){
     int dan,suji;
     int koma;
+
+    printf("先手 持ち駒");
+    for(koma=fu;koma <= hi;koma++){
+        if(hand[0][koma]==1){
+            printf("%s ",komaStr[koma]);
+        } else if(hand[0][koma] > 1){
+            printf("%s%d",komaStr[koma],hand[0][koma]);
+        }
+    }
+    printf("\n");
+    printf("  　９　８　７　６　５　４　３　２　１ \n");
+    printf("  +---+---+---+---+---+---+---+---+---+\n");
+    for(dan = 1;dan <= 9; dan++){
+        printf("%s|", "  \0一\0二\0三\0四\0五\0六\0七\0八\0九\0" + dan * 3);
+        for (suji = 9; i > 0; i--){
+          printf("%s|",komaStr[board[dan][suji]]);
+        }
+        printf("\n");
+        printf("  +---+---+---+---+---+---+---+---+---+\n");
+    }
+    printf("後手 持ち駒");
+    for(koma = fu;koma <= hi;koma++){
+      if(hand[1][koma]==1){
+        printf("%s ",komaStr[koma]);
+      } else if(hand[1][koma]>1){
+        printf("%s%d",komaStr[koma],hand[1][koma]);
+      }
+    }
 }
+
