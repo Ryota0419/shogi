@@ -51,5 +51,30 @@ enum komainf{
     wall = 0x80
     };
 
-typedef unsigned char komainf;
-inline int is_enemy
+typedef unsigned char komainfo;
+inline int is_enemy(komainfo koma){
+    return (koma & enemy);
+}
+inline int inself(int sengo,komainfo koma){
+    if(sengo==0){
+        inself(koma);
+    } else{
+        is_enemy(koma);
+    }
+}
+
+class situation{
+    protected:
+    komainfo board[11][11];
+    int hand[2][hi+1];
+};
+
+char *komaStr[] = {
+    "   ", " 歩", " 香", " 桂", " 銀", " 金", " 角", " 飛", " 玉", " と", " 杏", " 圭", " 全", " 金", " 馬", " 竜",
+    "   ", "v歩", "v香", "v桂", "v銀", "v金", "v角", "v飛", "v王", "vと", "v杏", "v圭", "v全", "v金", "v馬", "v竜"
+    };
+
+void situation::Print(){
+    int dan,suji;
+    int koma;
+}
